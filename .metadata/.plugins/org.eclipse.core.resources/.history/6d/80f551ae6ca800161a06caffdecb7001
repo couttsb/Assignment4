@@ -1,0 +1,54 @@
+package assignment4;
+
+/** 
+ * This code will take an integer and determine if the sum of each of its digits equals 7 which is a "lucky" number. (1) 
+ * <p>
+ * An integer is the input value. If the sum of its digits equals 7, this is a lucky number. If the sum of its digits is greater
+ * than 10, then the program will see if the sum of the previously calculated 'sum' value digits is equal to 7. If neither of 
+ * these cases is true, then the number is not a lucky number. 
+ * <p>
+ *
+ * Use {@link #SumsToLucky(int num)} to determine if the number is lucky
+ *
+ * @param num the integer number input to the program.
+ * @return    true if the number is lucky, otherwise false.
+ * @author    Brent Coutts (260617550)
+ */
+
+public boolean SumsToLucky (int num) {		
+	// Operations that transfer the integer to a string 'numAsAString', then separate these string characters 
+	// into an array 'digits'
+	String numAsAString = String.valueOf(num);
+	char[] digits = numAsAString.toCharArray();
+
+	// For loop to create a 'sum' of the each 'digit' present in the input number 'num'.
+	int sum = 0;
+	for (int j = 0; j < digits.length; j++) {
+		sum += digits[j];
+	}
+
+	// Return statement if this first 'sum' is lucky
+	if (sum == 7) {
+		return true;
+	}
+
+	// For loop to create a 'newSum' of each 'newDigits' present in the previously calculated number 'sum'. 
+	if (sum > 10) { 
+		// Changes integer number into a string 'newNumAsAString and the string into an array of characters 'newDigits'
+		String newNumAsAString = String.valueOf(sum);
+		char[] newDigits = newNumAsAString.toCharArray();
+
+		// The array of 'newDigits' is summed to create the 'newSum' value. 
+		int newSum = 0;
+		for (int k = 0; k < newDigits.length; k++) {
+			newSum += newDigits[k];
+		}
+
+		// This is the last opportunity for the number to be termed 'lucky'
+		if (newSum == 7) {
+			return true;
+		}
+	}
+	// If neither the first order sum of the numbers digits or the second order sum is lucky. The number is not a lucky number.
+	return false;
+}

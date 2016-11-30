@@ -1,0 +1,41 @@
+package assignment4;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class SumsToLuckyTest {
+	SumsToLucky stl;
+	int num = 10;
+	
+	@Before
+	public void setUp() throws Exception {
+		stl = new SumsToLucky(num); 
+	}
+
+	@Test
+	public void testFirstOrderLuckyNumber() {
+		boolean luckynum = true;
+		boolean numinput = stl.SumsToLucky(16);	
+		
+		assertTrue("Number is first order lucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testSecondOrderLuckyNumber() {
+		boolean luckynum = true;
+		boolean numinput = stl.SumsToLucky(88);	
+		
+		assertTrue("Number is second order lucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testManyZeros() {
+		boolean luckynum = true;
+		boolean numinput = stl.SumsToLucky(700000000);
+		
+		assertTrue("Number with many zeros is lucky", luckynum = numinput);
+	}
+	
+}

@@ -1,0 +1,33 @@
+package assignment4;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class SumsToLuckyTest {
+	SumsToLucky stl;
+	int num = 10;
+	
+	@Before
+	public void setUp() throws Exception {
+		stl = new SumsToLucky(num); 
+	}
+
+	@Test
+	public void testFirstOrderLuckyNumber() {
+		boolean luckynum = true;
+		boolean numinput = stl.SumsToLucky(num);	
+		
+		assertTrue("Number is lucky", luckynum == numinput);
+	}
+	
+	@Test2
+	public void testSecondOrderLuckyNumber() {
+		boolean luckynum = true;
+		boolean numinput = stl.SumsToLucky(num);	
+		
+		assertTrue("Number is lucky", luckynum == numinput);
+	}
+	
+}

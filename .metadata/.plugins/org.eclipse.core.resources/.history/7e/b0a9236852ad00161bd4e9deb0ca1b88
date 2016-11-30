@@ -1,0 +1,60 @@
+package assignment4;
+
+/** 
+ * This code will take an integer and determine if the sum of each of its digits equals 7 which is a "lucky" number. (1) 
+ * <p>
+ * An integer is the input value. If the sum of its digits equals 7, this is a lucky number. If the sum of its digits is greater
+ * than 10, then the program will see if the sum of the previously calculated 'sum' value digits is equal to 7. If neither of 
+ * these cases is true, then the number is not a lucky number. 
+ * <p>
+ *
+ * Use {@link #SumsToLucky(int num)} to determine if the number is lucky
+ *
+ * @param num the integer number input to the program.
+ * @return    true if the number is lucky, otherwise false.
+ * @author    Brent Coutts (260617550)
+ */
+
+public class ass4 {
+	public boolean SumsToLucky (int num) {		
+		// The input integer value is converted into a string, then an array consisting of each character is created. 
+		// This is done so the program can consider each digit separately. 
+//		String numAsAString = String.valueOf(num);
+//		char[] digits = numAsAString.toCharArray();
+		String digits = new Integer(num).toString();
+System.out.println(digits[0]);
+System.out.println(digits[1]);
+System.out.println(digits.length);
+		// The digits of the initially input integer are summed. 
+		int sum = 0;
+//		for (int j = 0; j < digits.length; j++) {
+//			sum += digits[j];
+//		}
+
+
+		// The program returns at this point if it has found a lucky number.
+		if (sum == 7) {
+			return true;
+		}
+
+		// If the sum of the digits is over 10, the program will sum the digits of the sum.  
+		if (sum > 10) { 
+			// Separates the digits of the number into an array, each index containing one digit.
+			String newNumAsAString = String.valueOf(sum);
+			char[] newDigits = newNumAsAString.toCharArray();
+
+			// The digits in this new array are summed.
+			int newSum = 0;
+			for (int k = 0; k < newDigits.length; k++) {
+				newSum += newDigits[k];
+			}
+
+			// This is the last opportunity for the program to return the number as a 'lucky' number. 
+			if (newSum == 7) {
+				return true;
+			}
+		}
+		// If neither the first order sum of the numbers digits or the second order sum is lucky. The number is not a lucky number.
+		return false;
+	}
+}

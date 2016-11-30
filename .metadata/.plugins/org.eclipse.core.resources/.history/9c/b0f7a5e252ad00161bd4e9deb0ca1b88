@@ -1,0 +1,86 @@
+package assignment4;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class SumsToLuckyTest {
+	ass4 a4;
+	
+	@Before
+	public void setUp() throws Exception {
+		a4 = new ass4(); 
+	}
+
+	@Test
+	public void testFirstOrderLucky() {
+		boolean luckynum = true;
+		boolean numinput = a4.SumsToLucky(16);	
+		assertTrue("Number is first order lucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testFirstOrderUnluckyLeft() {
+		boolean luckynum = false;
+		boolean numinput = a4.SumsToLucky(15);	
+		
+		assertTrue("Number one integer smaller than a first order lucky number is unlucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testFirstOrderUnluckyRight() {
+		boolean luckynum = false;
+		boolean numinput = a4.SumsToLucky(17);	
+		
+		assertTrue("Number one integer larger than a first order lucky number is unlucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testSecondOrderLucky() {
+		boolean luckynum = true;
+		boolean numinput = a4.SumsToLucky(88);	
+		
+		assertTrue("Number is second order lucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testSecondOrderUnluckyLeft() {
+		boolean luckynum = false;
+		boolean numinput = a4.SumsToLucky(87);	
+		
+		assertTrue("Number one integer smaller than a second order lucky number is unlucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testSecondOrderUnluckyRight() {
+		boolean luckynum = false;
+		boolean numinput = a4.SumsToLucky(89);	
+		
+		assertTrue("Number one integer larger than a second order lucky number is unlucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testManyZerosLucky() {
+		boolean luckynum = true;
+		boolean numinput = a4.SumsToLucky(7000);
+		
+		assertTrue("Number with many zeros is lucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testManyZerosUnluckyLeft() {
+		boolean luckynum = true;
+		boolean numinput = a4.SumsToLucky(6999);
+		
+		assertTrue("Number one integer smaller than a lucky number with many zeros is unlucky", luckynum == numinput);
+	}
+	
+	@Test
+	public void testManyZerosUnluckyRight() {
+		boolean luckynum = true;
+		boolean numinput = a4.SumsToLucky(7001);
+		
+		assertTrue("Number one integer larger than a lucky number with many zeros is unlucky", luckynum == numinput);
+	}	
+}
